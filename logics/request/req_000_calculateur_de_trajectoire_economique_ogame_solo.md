@@ -1,7 +1,7 @@
 ## req_000_calculateur_de_trajectoire_economique_ogame_solo - Calculateur de trajectoire economique OGame solo
 > From version: 1.0.0
 > Schema version: 1.0
-> Status: Ready
+> Status: Done
 > Understanding: Créer un MVP de planification économique solo : projection et optimisation de production à 10, 30 et 90 jours, puis import de l’état actuel du compte via l’export de données de compte.
 > Confidence: high
 > Complexity: high

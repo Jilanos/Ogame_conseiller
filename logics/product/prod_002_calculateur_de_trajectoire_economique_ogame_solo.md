@@ -1,6 +1,6 @@
 ## prod_002_calculateur_de_trajectoire_economique_ogame_solo - Calculateur de trajectoire economique OGame solo
 > Date: 2026-08-15
-> Status: Proposed
+> Status: Settled
 > Related request: `req_000_calculateur_de_trajectoire_economique_ogame_solo`
 > Related backlog: `item_001_calculateur_de_trajectoire_economique_ogame_solo`
 > Related task: `task_001_calculateur_de_trajectoire_economique_ogame_solo`
@@ -46,3 +46,7 @@ flowchart TD
 # Open questions
 - Quel export officiel est accessible pour l'univers ciblé et quelle autorisation utilisateur exige-t-il ?
 - Quels bonus doivent entrer dès le MVP (classe Collecteur, officiers, formes de vie) ?
+
+# References
+- Product back-reference: `item_001_calculateur_de_trajectoire_economique_ogame_solo`
+- Task back-reference: `task_001_calculateur_de_trajectoire_economique_ogame_solo`

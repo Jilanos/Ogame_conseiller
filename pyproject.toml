@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ogame-conseiller"
+version = "0.1.0"
+description = "Calculateur local de trajectoires economiques pour OGame"
+requires-python = ">=3.11"
+
+[project.scripts]
+ogame-conseiller = "ogame_conseiller.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

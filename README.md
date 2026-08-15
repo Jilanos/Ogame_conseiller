@@ -6,6 +6,15 @@ Le MVP vise des recommandations explicables pour maximiser la production cumulé
 
 Le cadrage produit, les choix d'architecture et le plan de développement sont dans le [corpus Logics](logics/INDEX.md).
 
+## Essai local
+
+```bash
+python3 -m pytest -q
+PYTHONPATH=src python3 -m ogame_conseiller.cli examples/empire.json
+```
+
+L'import MVP est un JSON normalisé (voir [examples/empire.json](examples/empire.json)). Il produit un résultat JSON avec la production de référence, la production projetée, le gain par ressource et les constructions recommandées pour chaque horizon.
+
 ## Limites du MVP
 
 - Pas de bot ni d'action automatisée dans OGame.

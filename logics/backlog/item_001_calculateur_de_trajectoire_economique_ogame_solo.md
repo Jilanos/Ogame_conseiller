@@ -1,10 +1,10 @@
 ## item_001_calculateur_de_trajectoire_economique_ogame_solo - Calculateur de trajectoire economique OGame solo
 > From version: 1.0.0
 > Schema version: 1.0
-> Status: Ready
+> Status: Done
 > Understanding: 90%
 > Confidence: 85%
-> Progress: 0%
+> Progress: 100%
 > Complexity: High
 > Theme: Operator workflow and runtime integration
 > Reminder: Update status/understanding/confidence/progress and linked request/task references when you edit this doc.
@@ -48,8 +48,8 @@ Un joueur mineur ne peut pas estimer simplement l'enchaînement de constructions
 # Links
 - Product brief(s): `prod_002_calculateur_de_trajectoire_economique_ogame_solo`
 - Architecture decision(s): `adr_003_calculateur_de_trajectoire_economique_ogame_solo`
-- Request: `logics/request/req_000_calculateur_de_trajectoire_economique_ogame_solo.md`
-- Primary task(s): (none yet)
+- Request: `req_000_calculateur_de_trajectoire_economique_ogame_solo`
+- Primary task(s): `task_001_calculateur_de_trajectoire_economique_ogame_solo`
 
 # Priority
 - Priority: High
@@ -57,6 +57,7 @@ Un joueur mineur ne peut pas estimer simplement l'enchaînement de constructions
 
 # Notes
 - Découpage recommandé : (1) modèle et tests, (2) simulateur, (3) recherche de trajectoire, (4) import/validation, (5) interface et comparaison.
+- Task `task_001_calculateur_de_trajectoire_economique_ogame_solo` was finished via `logics-manager flow finish task` on 2026-08-15.
 
 # Tasks
 - `task_001_calculateur_de_trajectoire_economique_ogame_solo`

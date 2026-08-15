@@ -1,0 +1,8 @@
+{
+  "rules": {"economy_speed": 2.0},
+  "weights": {"metal": 1.0, "crystal": 1.2, "deuterium": 1.5},
+  "planets": [
+    {"name": "Alpha", "metal_mine": 8, "crystal_mine": 6, "deuterium_synthesizer": 4, "solar_plant": 12, "metal": 1000, "crystal": 1000, "deuterium": 500},
+    {"name": "Beta", "metal_mine": 5, "crystal_mine": 4, "deuterium_synthesizer": 2, "solar_plant": 8, "metal": 1000, "crystal": 1000, "deuterium": 500}
+  ]
+}
