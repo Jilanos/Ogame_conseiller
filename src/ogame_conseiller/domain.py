@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
-from math import ceil
 from typing import Literal
 
 Resource = Literal["metal", "crystal", "deuterium"]
@@ -70,6 +69,9 @@ class Planet:
     crystal_mine: int = 1
     deuterium_synthesizer: int = 1
     solar_plant: int = 1
+    metal_storage: int = 0
+    crystal_storage: int = 0
+    deuterium_tank: int = 0
     metal: float = 0.0
     crystal: float = 0.0
     deuterium: float = 0.0
@@ -124,8 +126,18 @@ class Empire:
         # ailleurs : il faut alors accumuler sa production depuis son propre
         # dernier événement, pas depuis l'horloge globale de l'action.
         advanced = self.advance_planet(planet, available - planet.available_at)
-        if any(getattr(advanced, r) + 1e-9 < costs[r] for r in RESOURCES):
-            return None
+        deficits = {r: max(0.0, costs[r] - getattr(advanced, r)) for r in RESOURCES}
+        if any(deficits.values()):
+            production = advanced.production(self.rules)
+            waits = []
+            for resource, deficit in deficits.items():
+                if deficit <= 0:
+                    continue
+                if production[resource] <= 0:
+                    return None
+                waits.append(deficit / production[resource])
+            advanced = self.advance_planet(advanced, max(waits, default=0.0))
+            available += max(waits, default=0.0)
         after_payment = {r: getattr(advanced, r) - costs[r] for r in RESOURCES}
         duration = self.rules.construction_hours(costs)
         finished = available + duration

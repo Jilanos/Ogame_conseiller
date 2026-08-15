@@ -83,7 +83,8 @@ def optimize(empire: Empire, days: int, *, beam_width: int = 12, max_actions: in
                 planets = list(candidate.empire.planets)
                 planets[index] = updated_planet
                 updated = replace(candidate.empire, planets=tuple(planets))
-                action = Action(planet.name, kind, planet.level(kind), planet.level(kind) + 1, max(frontier_time, planet.available_at), finish, costs)
+                duration = candidate.empire.rules.construction_hours(costs)
+                action = Action(planet.name, kind, planet.level(kind), planet.level(kind) + 1, finish - duration, finish, costs)
                 horizon_state = _to_horizon(updated, horizon)
                 production = {r: sum(p.cumulative[r] for p in horizon_state.planets) for r in RESOURCES}
                 score = updated.weighted(production)

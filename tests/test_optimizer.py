@@ -29,3 +29,9 @@ def test_optimizer_is_deterministic():
 def test_upgrading_one_planet_does_not_lose_idle_planet_production():
     result = optimize(empire(), 10, beam_width=4, max_actions=4)
     assert result.production["deuterium"] >= result.baseline_production["deuterium"]
+
+
+def test_optimizer_waits_for_resources_when_starting_from_zero():
+    result = optimize(Empire.from_dict({"planets": [{"name": "Alpha", "metal_mine": 4, "crystal_mine": 3, "deuterium_synthesizer": 1, "solar_plant": 8}]}), 10, max_actions=1)
+    assert result.actions
+    assert result.actions[0].start_hour > 0
