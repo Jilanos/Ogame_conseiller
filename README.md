@@ -1,22 +1,42 @@
 # OGame Conseiller
 
-Un calculateur local de trajectoires économiques pour un empire OGame solo orienté mines.
+Un calculateur local qui recommande quelles mines construire en priorité dans OGame.
 
-Le MVP vise des recommandations explicables pour maximiser la production cumulée de métal, cristal et deutérium à 10, 30 et 90 jours. Il partira d'une saisie manuelle ou d'un export de données du compte, sans automatiser d'action dans le jeu.
+## Problème résolu
 
-Le cadrage produit, les choix d'architecture et le plan de développement sont dans le [corpus Logics](logics/INDEX.md).
+Un joueur solo orienté mines doit choisir, planète par planète, quoi améliorer et dans quel ordre. L'outil lit l'état d'un empire et propose une suite de constructions pour maximiser la production cumulée de métal, de cristal et de deutérium à 10, 30 et 90 jours. Il ne joue pas à la place du joueur : aucune action n'est automatisée dans le jeu.
 
-## Essai local
+## Fonctionnalités
+
+- Import d'un empire au format JSON normalisé (voir [examples/empire.json](examples/empire.json)).
+- Modèle économique : mines de métal, de cristal et de deutérium, centrale solaire, stockage, fenêtres d'indisponibilité.
+- Optimiseur par recherche en faisceau (`--beam-width`, `--max-actions`) qui attend les ressources avant de planifier une amélioration.
+- Sortie JSON par horizon : production de référence, production projetée, gain par ressource, constructions recommandées avec coûts, heures de début et de fin.
+- Pondération des ressources et vitesse d'économie de l'univers paramétrables.
+
+## Démarrage rapide
+
+Python 3.11 ou plus récent.
 
 ```bash
-python3 -m pytest -q
-PYTHONPATH=src python3 -m ogame_conseiller.cli examples/empire.json
+python3 -m venv .venv
+.venv/bin/pip install -e . pytest
+.venv/bin/python -m pytest -q
+.venv/bin/ogame-conseiller examples/empire.json
 ```
 
-L'import MVP est un JSON normalisé (voir [examples/empire.json](examples/empire.json)). Il produit un résultat JSON avec la production de référence, la production projetée, le gain par ressource et les constructions recommandées pour chaque horizon.
+## Stack
 
-## Limites du MVP
+Python (bibliothèque standard uniquement), pytest pour les tests, setuptools pour le packaging.
+
+## État
+
+Prototype (v0.1.0), 14 tests verts. La saisie se fait par un JSON écrit à la main. L'import d'un export de compte est spécifié dans le [corpus Logics](logics/INDEX.md) mais pas encore implémenté.
+
+## Limites
 
 - Pas de bot ni d'action automatisée dans OGame.
-- Pas de stratégie militaire ou de commerce.
-- Les règles et bonus d'univers sont paramétrables et versionnés ; les bonus non gérés doivent être signalés.
+- Pas de stratégie militaire ni de commerce.
+- Les règles et bonus d'univers sont paramétrables ; les bonus non gérés doivent être signalés.
+
+Le cadrage produit, l'architecture et le plan de développement sont dans le [corpus Logics](logics/INDEX.md).
